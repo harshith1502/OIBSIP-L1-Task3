@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chokokutai&family=Orbitron&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="task3.css">
+    <title>Task3</title>
+</head>
+<body>
+    <div id="bg">
+            <h2>Temperature Converter</h2>
+
+            
+               <section> <label>Enter Input</label><input type="number" id="input"  ></section>
+            
+                <section><label for="">Input Type</label>
+                <select id="input_type">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select></li>
+                </section>
+          
+
+            <section id="out">
+                <label for="">Convert To</label>
+                <select id="output_type">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+            </section>
+
+            <h1 id="output"></h1>
+            <button onclick="convert()">Convert</button> 
+    </div>
+
+    <script>
+
+        function convert(){
+            var input       = document.getElementById("input").value;
+            var input_type  = document.getElementById("input_type").value;
+            var output_type = document.getElementById("output_type").value;
+            var output;
+
+             
+            if(input==''){
+                alert("enter some input");
+            }
+            else if (input_type==output_type){
+
+                output=input;
+                if (output_type=="kelvin")
+                {
+                    document.getElementById("output").innerHTML=output+" "+output_type;
+                }
+                else{
+                    document.getElementById("output").innerHTML=output+'&deg'+" "+output_type;
+                }
+                
+            }
+
+            else if(input_type=="celsius" && output_type=="fahrenheit"){
+                output= input*(9/5) + 32;
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+'&deg'+" "+output_type;
+            }
+            else if(input_type=="celsius" && output_type=="kelvin"){
+                output= parseFloat(input) + 273.15;
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+" "+output_type;
+            }
+            else if(input_type=="fahrenheit" && output_type=="celsius"){
+                output= (input - 32)*(5/9)
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+'&deg'+" "+output_type;
+            }
+            else if(input_type=="fahrenheit" && output_type=="kelvin"){
+                output= (input - 32)*(5/9) + 273.15;
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+" "+output_type;
+            }
+            else if(input_type=="kelvin" && output_type=="celsius"){
+                output= input-273.15;
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+'&deg'+" "+output_type;
+            }
+            else if(input_type=="kelvin" && output_type=="fahrenheit"){
+                output= (input - 273.15) * (9/5) + 32
+                output=output.toFixed(2);
+                document.getElementById("output").innerHTML=output+'&deg'+" "+output_type;
+            }
+           
+        }
+
+
+       
+    </script>
+    
+</body>
+</html>
